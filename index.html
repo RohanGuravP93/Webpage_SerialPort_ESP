@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Test page</title>
+    <link rel="stylesheet" href="../webpage/index.css">
+    
+    <script src="./port.js"></script>
+    <script src="../webpage/calculations.js"></script>
+</head>
+<body>
+    <div class="H1">This is test to check the LED Control on the ESP32</div>
+    <script>
+        function sendData(data) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/sendData", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify({ data: data }));
+        }
+    </script>
+    <button type="button" id="ledon" onclick="sendData('on')">LED ON</button>
+    <button type="button" id="ledoff" onclick="sendData('off')">LED off</button>
+
+
+</body>
+</html>
